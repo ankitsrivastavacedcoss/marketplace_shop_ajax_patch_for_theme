@@ -1,0 +1,103 @@
+....
+.
+.
+.
+.
+.
+..
+.
+
+
+<script>
+require([
+'jquery'
+], function() {
+jQuery(".sort-desc").click(function(){
+    var url = '<?php //echo $this->getUrl("csmarketplace/vhops/index")?>'+"?product_list_dir=asc";
+   
+    if(jQuery('.mode-list').hasClass('active')){
+        url = url + '&product_list_mode=list';
+    }
+    if(jQuery('.mode-grid').hasClass('active')){
+        url = url + '&product_list_mode=grid';
+    }
+    url = url + '&product_list_limit='+jQuery('#limiter').find(":selected").val();
+    window.location.href= url;
+
+});
+jQuery(".sort-asc").click(function(){
+    var url = '<?php //echo $this->getUrl("csmarketplace/vhops/index")?>'+"?product_list_dir=desc";
+     
+    if(jQuery('.mode-list').hasClass('active')){
+        url = url + '&product_list_mode=list';
+    }
+    if(jQuery('.mode-grid').hasClass('active')){
+        url = url + '&product_list_mode=grid';
+    }
+    url = url + '&product_list_limit='+jQuery('#limiter').find(":selected").val();
+    window.location.href= url;
+
+});
+
+jQuery(".page").click(function(){
+    //console.log(jQuery(this).attr('href'));
+    window.location.href = jQuery(this).attr('href');
+});
+
+jQuery(".sorter-options").click(function(){ 
+    var url = window.location.href;
+    if(window.location.href.indexOf('?') > 0){
+        url = url + '&product_list_limit='+jQuery(this).find(":selected").val();
+    }else{
+        url = url + '?&product_list_limit='+jQuery(this).find(":selected").val();
+    }
+    window.location.href = url;
+});
+
+jQuery(".mode-list").click(function(){
+    var url = '?product_list_mode=list';
+    if(jQuery('.sorter-action').hasClass('sort-desc')){
+        url = url + '&product_list_dir=desc';
+    }
+    url = url + '&product_list_limit='+jQuery('#limiter').find(":selected").val();
+    window.location.href = url;
+});
+
+jQuery(".mode-grid").click(function(){
+    var url = '?';
+    if(jQuery('.sorter-action').hasClass('sort-desc')){
+        url = url + '&product_list_dir=desc';
+    }
+    url = url + '&product_list_limit='+jQuery('#limiter').find(":selected").val();
+    window.location.href = url;
+});
+
+jQuery(".limiter").change(function(){
+    var url = '?';
+    //var url = '?product_list_limit='+jQuery(this).find(":selected").val();
+    if(jQuery('.mode-list').hasClass('active')){
+        url = url + '&product_list_mode=list';
+    }
+    if(jQuery('.sorter-action').hasClass('sort-desc')){
+        url = url + '&product_list_dir=desc';
+    }
+    url = url + '&product_list_limit='+jQuery('#limiter').find(":selected").val();
+    window.location.href = url;
+});
+
+// jQuery(".previous").click(function(){
+ 
+// // var url = '?';
+// // //var url = '?product_list_limit='+jQuery(this).find(":selected").val();
+// // if(jQuery('.mode-list').hasClass('active')){
+// // url = url + '&product_list_mode=list';
+// // }
+// // if(jQuery('.sorter-action').hasClass('sort-desc')){
+// // url = url + '&product_list_dir=desc';
+// // }
+// // url = url + '&product_list_limit='+jQuery('#limiter').find(":selected").val();
+// // window.location.href = url;
+// });
+
+});
+</script>
