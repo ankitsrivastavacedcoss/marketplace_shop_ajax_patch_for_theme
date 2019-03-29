@@ -1,0 +1,1 @@
+# marketplace_shop_ajax_patch_for_theme
